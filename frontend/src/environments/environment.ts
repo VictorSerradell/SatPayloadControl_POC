@@ -1,8 +1,8 @@
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:3001/api/v1',
-  wsUrl: 'http://localhost:3001',
-  wsNamespace: '/telemetry',
-  appName: 'SatPayloadControl',
-  version: '1.0.0',
+  production: true,
+  apiUrl: "https://satpayloadcontrolpoc-production.up.railway.app/api/v1",
+  wsUrl: "https://satpayloadcontrolpoc-production.up.railway.app",
+  wsNamespace: "/telemetry",
+  appName: "SatPayloadControl",
+  version: "1.0.0",
 };
