@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@include mat.core();
 
 // ── Theme ──────────────────────────────────────────────────────────────────
 $primary-palette: mat.define-palette(mat.$indigo-palette, 700, 400, 900);
@@ -107,4 +106,3 @@ html, body {
 .flex-row { display: flex; align-items: center; }
 .gap-8  { gap: 8px; }
 .gap-16 { gap: 16px; }
-

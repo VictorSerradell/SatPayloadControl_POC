@@ -2,7 +2,7 @@ import {
   Component, inject, signal, computed,
   OnInit, ChangeDetectionStrategy, ViewChild,
 } from "@angular/core";
-import { DecimalPipe, DatePipe, NgClass } from "@angular/common";
+import { DecimalPipe, DatePipe, NgClass, UpperCasePipe } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { MatCardModule } from "@angular/material/card";
 import { MatTableModule, MatTableDataSource } from "@angular/material/table";
@@ -37,12 +37,12 @@ const PARAMS = [
 @Component({
   selector: "app-telemetry-monitor",
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.Default,
   imports: [
     DecimalPipe, DatePipe, NgClass, FormsModule,
     MatCardModule, MatTableModule, MatSortModule, MatPaginatorModule,
     MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule,
-    MatChipsModule, MatSelectModule,
+    MatChipsModule, MatSelectModule, UpperCasePipe,
   ],
   template: `
     <div class="page-header">
