@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  apiUrl: '/api/v1',
-  wsUrl: '',   // Same origin in prod (nginx proxies)
-  wsNamespace: '/telemetry',
-  appName: 'SatPayloadControl',
-  version: '1.0.0',
+  apiUrl: "https://satpayloadcontrolpoc-production.up.railway.app/api/v1",
+  wsUrl: "https://satpayloadcontrolpoc-production.up.railway.app",
+  wsNamespace: "/telemetry",
+  appName: "SatPayloadControl",
+  version: "1.0.0",
 };
