@@ -1,0 +1,20 @@
+# docker-compose.prod.yml — Production overrides
+# Usage: docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+version: "3.9"
+
+services:
+  backend:
+    build:
+      target: production
+    command: node dist/main
+    environment:
+      NODE_ENV: production
+      DB_SYNC: "false"
+      DB_LOGGING: "false"
+      THROTTLE_LIMIT: "100"
+      COMMAND_THROTTLE_LIMIT: "10"
+    deploy:
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+        max_attempts: 3

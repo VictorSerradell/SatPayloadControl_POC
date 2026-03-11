@@ -1,0 +1,14 @@
+{
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "MONITOR": "TM Monitor",
+    "COMMANDS": "Commands",
+    "EVENTS": "Event Log",
+    "HISTORY": "History"
+  },
+  "AUTH": { "LOGIN": "Login", "LOGOUT": "Logout", "EMAIL": "Email", "PASSWORD": "Password" },
+  "DASHBOARD": { "TITLE": "Payload Dashboard", "CONNECTED": "Connected", "DISCONNECTED": "Disconnected" },
+  "TELEMETRY": { "TEMPERATURE": "Temperature", "VOLTAGE": "Voltage", "CURRENT": "Current", "POWER": "Power", "BATTERY": "Battery", "SIGNAL": "Signal", "MODE": "Instrument Mode" },
+  "COMMANDS": { "SEND": "Send Command", "CONFIRM": "Confirm", "CANCEL": "Cancel", "SELECT_TYPE": "Command Type", "SELECT_TARGET": "Target Instrument" },
+  "STATUS": { "ON": "ON", "OFF": "OFF", "STANDBY": "STANDBY", "ERROR": "ERROR", "CALIBRATING": "CALIBRATING" }
+}

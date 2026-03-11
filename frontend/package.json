@@ -1,0 +1,65 @@
+{
+  "name": "satpayloadcontrol-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "ng serve --proxy-config proxy.conf.json",
+    "start:dev": "ng serve --proxy-config proxy.conf.json --port 4200",
+    "build": "ng build",
+    "build:prod": "ng build --configuration production",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "ng lint"
+  },
+  "dependencies": {
+    "@angular/animations": "^17.3.0",
+    "@angular/cdk": "^17.3.0",
+    "@angular/common": "^17.3.0",
+    "@angular/compiler": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@angular/forms": "^17.3.0",
+    "@angular/material": "^17.3.0",
+    "@angular/platform-browser": "^17.3.0",
+    "@angular/platform-browser-dynamic": "^17.3.0",
+    "@angular/router": "^17.3.0",
+    "@angular/localize": "^17.3.0",
+    "chart.js": "4.4.2",
+    "ng2-charts": "5.0.4",
+    "socket.io-client": "^4.7.4",
+    "rxjs": "^7.8.1",
+    "tslib": "^2.6.2",
+    "zone.js": "^0.14.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.3.0",
+    "@angular/cli": "^17.3.0",
+    "@angular/compiler-cli": "^17.3.0",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.24",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "~5.4.2"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterFramework": [
+      "<rootDir>/setup-jest.ts"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "<rootDir>/dist/"
+    ],
+    "transform": {
+      "^.+\\.(ts|mjs|js|html)$": [
+        "jest-preset-angular",
+        {
+          "tsconfig": "<rootDir>/tsconfig.spec.json"
+        }
+      ]
+    }
+  },
+  "overrides": {
+    "chart.js": "4.4.2"
+  }
+}

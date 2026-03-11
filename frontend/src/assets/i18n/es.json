@@ -1,0 +1,14 @@
+{
+  "NAV": {
+    "DASHBOARD": "Panel Principal",
+    "MONITOR": "Monitor TM",
+    "COMMANDS": "Comandos",
+    "EVENTS": "Registro Eventos",
+    "HISTORY": "Histórico"
+  },
+  "AUTH": { "LOGIN": "Iniciar sesión", "LOGOUT": "Cerrar sesión", "EMAIL": "Correo", "PASSWORD": "Contraseña" },
+  "DASHBOARD": { "TITLE": "Panel de Payload", "CONNECTED": "Conectado", "DISCONNECTED": "Desconectado" },
+  "TELEMETRY": { "TEMPERATURE": "Temperatura", "VOLTAGE": "Voltaje", "CURRENT": "Corriente", "POWER": "Potencia", "BATTERY": "Batería", "SIGNAL": "Señal", "MODE": "Modo Instrumento" },
+  "COMMANDS": { "SEND": "Enviar Comando", "CONFIRM": "Confirmar", "CANCEL": "Cancelar", "SELECT_TYPE": "Tipo de Comando", "SELECT_TARGET": "Instrumento Destino" },
+  "STATUS": { "ON": "ENCENDIDO", "OFF": "APAGADO", "STANDBY": "EN ESPERA", "ERROR": "ERROR", "CALIBRATING": "CALIBRANDO" }
+}

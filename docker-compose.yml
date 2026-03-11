@@ -1,0 +1,77 @@
+version: "3.9"
+
+services:
+  # ── PostgreSQL ─────────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: satpayload-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: satpayload
+      POSTGRES_USER: satuser
+      POSTGRES_PASSWORD: satpass123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U satuser -d satpayload"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ── Backend NestJS ─────────────────────────────────────────────────────────
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: builder       # Use builder stage for dev (includes devDeps)
+    container_name: satpayload-backend
+    restart: unless-stopped
+    command: npm run start:dev
+    environment:
+      NODE_ENV: development
+      PORT: 3000
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USERNAME: satuser
+      DB_PASSWORD: satpass123
+      DB_DATABASE: satpayload
+      DB_SYNC: "true"
+      DB_LOGGING: "false"
+      JWT_SECRET: dev-secret-change-in-production-minimum-32-chars
+      JWT_EXPIRES_IN: 60m
+      CORS_ORIGIN: http://localhost:4200
+      THROTTLE_TTL: "60"
+      THROTTLE_LIMIT: "200"
+      COMMAND_THROTTLE_LIMIT: "20"
+      TELEMETRY_INTERVAL_MS: "2000"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend/src:/app/src         # Hot reload
+      - ./backend/logs:/app/logs       # Persist logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # ── Frontend Angular (prod build served by nginx) ──────────────────────────
+  # NOTE: Uncomment when frontend is built.
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   container_name: satpayload-frontend
+  #   ports:
+  #     - "4200:80"
+  #   depends_on:
+  #     - backend
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  default:
+    name: satpayload-network
