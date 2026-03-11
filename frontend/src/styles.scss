@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@include mat.core();
 
 // ── Theme ──────────────────────────────────────────────────────────────────
 $primary-palette: mat.define-palette(mat.$indigo-palette, 700, 400, 900);
