@@ -1,8 +1,19 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
+
+# Accept backend URL at build time (injected by Railway)
+ARG BACKEND_URL=https://your-backend.up.railway.app
+ENV BACKEND_URL=${BACKEND_URL}
+
 COPY package*.json ./
 RUN npm ci
 COPY . .
+
+# Patch environment.prod.ts with the real backend URL before building
+RUN sed -i "s|apiUrl: '.*'|apiUrl: '${BACKEND_URL}/api/v1'|g" src/environments/environment.prod.ts && \
+    sed -i "s|wsUrl: '.*'|wsUrl: '${BACKEND_URL}'|g"           src/environments/environment.prod.ts && \
+    cat src/environments/environment.prod.ts
+
 RUN npm run build:prod
 
 FROM nginx:alpine AS production
